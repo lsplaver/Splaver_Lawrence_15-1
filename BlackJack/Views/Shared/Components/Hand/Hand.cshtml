@@ -1,0 +1,25 @@
+﻿@model HandViewModel
+
+@if (Model.HandType == "Player")
+{
+    @foreach (Card card in Model.Hand.Cards)
+    {
+        <img src="~/images/@(card.Name).svg" />
+    }
+}
+else
+{
+    @for (int i = 0; i < Model.Hand.Count; i++)
+    {
+        if (i == 0 && Model.Hand.HideHoleCard)
+        {
+            // hide hold card (first card)
+            <img src="~/images/back.svg" />
+        }
+        else
+        {
+            Card card = Model.Hand.Cards[i];
+            <img src="~/images/@(card.Name).svg" />
+        }
+    }
+}
