@@ -12,16 +12,9 @@ namespace BlackJack.Components
         private IGame game { get; set; }
         public PlayerHand(IGame g) => game = g;
 
-        public IViewComponentResult Invoke(IGame game)
+        public IViewComponentResult Invoke()
         {
-            foreach(Card card in game.Player.Hand.Cards)
-            {
-                //< img src = "~/images/@(card.Name).svg" />
-                
-            }
-            
-
-            return View("~/Views/Home/Components/PlayerHand/PlayerHand.cshtml");
+            return View("~/Views/Shared/Components/PlayerHand/PlayerHand.cshtml", game.Player.Hand);
         }
     }
 }
