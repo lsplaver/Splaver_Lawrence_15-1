@@ -15,6 +15,12 @@ namespace BlackJack.Models.TagHelpers
             list.SetAttribute("class", cssClasses);
         }
 
+        public static void BuildTag(this TagHelperOutput output, string tagName)
+        {
+            output.TagName = tagName;
+            output.TagMode = TagMode.StartTagAndEndTag;
+        }
+
         public static void BuildTag(this TagHelperOutput output, string tagName, string classNames)
         {
             output.TagName = tagName;
