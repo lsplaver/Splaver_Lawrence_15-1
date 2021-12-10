@@ -17,14 +17,14 @@ namespace BlackJack.Components
             HandViewModel vm = new HandViewModel();
             if (handType == "Player")
             {
-                Models.Hand playerHand = (Models.Hand)hand; //game.Player.Hand;
+                Models.Hand playerHand = (Models.Hand)hand;
                 vm.HandType = "Player";
                 vm.Hand = playerHand;
                 return View("~/Views/Shared/Components/Hand/Hand.cshtml", vm);
             }
             else
             {
-                Models.Hand dealerHand = game.Dealer.Hand;
+                Models.Hand dealerHand = (Models.Hand)hand;
                 vm.HandType = "Dealer";
                 vm.Hand = dealerHand;
                 return View("~/Views/Shared/Components/Hand/Hand.cshtml", vm);
