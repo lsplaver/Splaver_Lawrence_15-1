@@ -28,10 +28,44 @@ namespace BlackJack.Models.TagHelpers
             output.Attributes.AppendCssClass(classNames);
         }
 
+        public static void BuildTag(this TagHelperOutput output, string tagName, string AttributeName, string AttributeValue, string classNames, string content)
+        {
+            output.TagName = tagName;
+            output.TagMode = TagMode.StartTagAndEndTag;
+            output.Attributes.SetAttribute(AttributeName, AttributeValue);
+            output.Attributes.AppendCssClass(classNames);
+            output.Content.SetContent(content);
+        }
+
+        public static void BuildTag(this TagHelperOutput output, string tagName, string attributeNameOne, string attributeValueOne, string classNames, string attributeNameTwo, string attributeValueTwo, string content)
+        {
+            output.TagName = tagName;
+            output.TagMode = TagMode.StartTagAndEndTag;
+            output.Attributes.SetAttribute(attributeNameOne, attributeValueOne);
+            output.Attributes.SetAttribute(attributeNameTwo, attributeValueTwo);
+            output.Attributes.AppendCssClass(classNames);
+            output.Content.SetContent(content);
+        }
+
+        public static void BuildOpenTag(this TagHelperOutput output, string tagName, string attributeNameOne, string attributeValueOne, string attributeNameTwo, string attributeValueTwo, string classNames)
+        {
+            output.TagName = tagName;
+            output.TagMode = TagMode.StartTagOnly;
+            output.Attributes.SetAttribute(attributeNameOne, attributeValueOne);
+            output.Attributes.SetAttribute(attributeNameTwo, attributeValueTwo);
+            output.Attributes.AppendCssClass(classNames);
+        }
+
         public static void BuildLink(this TagHelperOutput output, string url, string className)
         {
             output.BuildTag("a", className);
             output.Attributes.SetAttribute("href", url);
+        }
+
+        public static void BuildClosingTag(this TagHelperOutput output, string tagName)
+        {
+            output.TagName = tagName;
+            output.TagMode = TagMode.StartTagOnly;
         }
     }
 }

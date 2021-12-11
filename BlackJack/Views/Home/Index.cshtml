@@ -15,9 +15,9 @@
 </div>
 
 <div class="row mb-2">
-
     <div class="col-2 offset-3">
-        <form asp-action="Deal" method="post" class="col">
+        <deal-hit-stand asp-action="Deal"></deal-hit-stand>
+        @*<form asp-action="Deal" method="post" class="col">
             @if (Model.NeedsDeal)
             {
                 <button type="submit" class="btn btn-primary">Deal</button>
@@ -27,11 +27,12 @@
                 <button type="submit" class="btn btn-primary" disabled>Deal</button>
             }
 
-        </form>
+        </form>*@
     </div>
 
     <div class="col-2">
-        <form asp-action="Hit" method="post" class="col">
+        <deal-hit-stand asp-action="Hit"></deal-hit-stand>
+        @*<form asp-action="Hit" method="post" class="col">
             @if (!Model.NeedsDeal)
             {
                 <button type="submit" class="btn btn-primary">Hit</button>
@@ -40,11 +41,12 @@
             {
                 <button type="submit" class="btn btn-primary" disabled>Hit</button>
             }
-        </form>
+        </form>*@
     </div>
 
     <div class="col-2">
-        <form asp-action="Stand" method="post" class="col">
+        <deal-hit-stand asp-action="Stand"></deal-hit-stand>
+        @*<form asp-action="Stand" method="post" class="col">
             @if (!Model.NeedsDeal)
             {
                 <button type="submit" class="btn btn-primary">Stand</button>
@@ -53,7 +55,7 @@
             {
                 <button type="submit" class="btn btn-primary" disabled>Stand</button>
             }
-        </form>
+        </form>*@
     </div>
 
 </div>
