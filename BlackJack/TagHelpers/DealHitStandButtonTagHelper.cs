@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace BlackJack.TagHelpers
 {
     [HtmlTargetElement("deal-hit-stand")]
+    [RestrictChildren("deal-button", "hit-button", "stand-button")]
     public class DealHitStandButtonTagHelper : TagHelper
     {
         [ViewContext]
@@ -21,83 +22,21 @@ namespace BlackJack.TagHelpers
         private IGame game { get; set; }
         public DealHitStandButtonTagHelper(IGame g) => game = g;
 
-        public bool NeedsDeal()
-        {
-            bool NeedsDeal = false;
-            if (!game.Dealer.Hand.HasCards && !game.Player.Hand.HasCards)
-            {
-                NeedsDeal = true;
-            }
-            return NeedsDeal;
-        }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             string action = (string)context.AllAttributes["asp-action"].Value.ToString();
             
             if (action == "Deal")
             {
-                output.Attributes.Clear();
-                //output.Content.Clear();
-                output.BuildOpenTag("form", "asp-action", "Deal", "method", "post", "col");
-                if (NeedsDeal())
-                {
-                    output.Attributes.Clear();
-                    //output.Content.Clear();
-                    output.BuildTag("button", "type", "submit", "btn btn-primary", "Deal");
-                }
-                else
-                {
-                    output.Attributes.Clear();
-                    //output.Content.Clear();
-                    output.BuildTag("button", "type", "submit", "btn btn-primary", "disabled", "true", "Deal");
-                }
-                output.Attributes.Clear();
-                //output.Content.Clear();
-                output.BuildClosingTag("/form");
+                output.BuildTag("form", "action", "Home/Deal", "method", "post", "col");
             }
-
-            if (action == "Hit")
+            else if (action == "Hit")
             {
-                //output.Attributes.Clear();
-                //output.Content.Clear();
-                output.BuildOpenTag("form", "asp-action", "Hit", "method", "post", "col");
-                if (!NeedsDeal())
-                {
-                    //output.Attributes.Clear();
-                    //output.Content.Clear();
-                    output.BuildTag("button", "type", "submit", "btn btn-primary", "Hit");
-                }
-                else
-                {
-                    //output.Attributes.Clear();
-                    //output.Content.Clear();
-                    output.BuildTag("button", "type", "submit", "btn btn-primary", "disabled", "true", "Hit");
-                }
-                //output.Attributes.Clear();
-                //output.Content.Clear();
-                //output.BuildClosingTag("/form");
+                output.BuildTag("form", "action", "Home/Hit", "method", "post", "col");
             }
-
-            if (action == "Stand")
+            else
             {
-                //output.Attributes.Clear();
-                //output.Content.Clear();
-                output.BuildOpenTag("form", "asp-action", "Stand", "method", "post", "col");
-                if (!NeedsDeal())
-                {
-                    //output.Attributes.Clear();
-                    //output.Content.Clear();
-                    output.BuildTag("button", "type", "submit", "btn btn-primary", "Stand");
-                }
-                else
-                {
-                    //output.Attributes.Clear();
-                    //output.Content.Clear();
-                    output.BuildTag("button", "type", "submit", "btn btn-primary", "disabled", "true", "Stand");
-                }
-                //output.Attributes.Clear();
-                //output.Content.Clear();
-                //output.BuildClosingTag("/form");
+                output.BuildTag("form", "action", "Home/Stand", "method", "post", "col");
             }
         }
     }

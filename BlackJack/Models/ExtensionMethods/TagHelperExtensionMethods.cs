@@ -47,10 +47,10 @@ namespace BlackJack.Models.TagHelpers
             output.Content.SetContent(content);
         }
 
-        public static void BuildOpenTag(this TagHelperOutput output, string tagName, string attributeNameOne, string attributeValueOne, string attributeNameTwo, string attributeValueTwo, string classNames)
+        public static void BuildTag(this TagHelperOutput output, string tagName, string attributeNameOne, string attributeValueOne, string attributeNameTwo, string attributeValueTwo, string classNames)
         {
             output.TagName = tagName;
-            output.TagMode = TagMode.StartTagOnly;
+            output.TagMode = TagMode.StartTagAndEndTag;
             output.Attributes.SetAttribute(attributeNameOne, attributeValueOne);
             output.Attributes.SetAttribute(attributeNameTwo, attributeValueTwo);
             output.Attributes.AppendCssClass(classNames);
@@ -60,12 +60,6 @@ namespace BlackJack.Models.TagHelpers
         {
             output.BuildTag("a", className);
             output.Attributes.SetAttribute("href", url);
-        }
-
-        public static void BuildClosingTag(this TagHelperOutput output, string tagName)
-        {
-            output.TagName = tagName;
-            output.TagMode = TagMode.StartTagOnly;
         }
     }
 }

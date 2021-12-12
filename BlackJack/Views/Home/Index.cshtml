@@ -16,46 +16,21 @@
 
 <div class="row mb-2">
     <div class="col-2 offset-3">
-        <deal-hit-stand asp-action="Deal"></deal-hit-stand>
-        @*<form asp-action="Deal" method="post" class="col">
-            @if (Model.NeedsDeal)
-            {
-                <button type="submit" class="btn btn-primary">Deal</button>
-            }
-            else
-            {
-                <button type="submit" class="btn btn-primary" disabled>Deal</button>
-            }
-
-        </form>*@
+        <deal-hit-stand asp-action="Deal">
+            <deal-button data="@Model.NeedsDeal"></deal-button>
+        </deal-hit-stand>
     </div>
 
     <div class="col-2">
-        <deal-hit-stand asp-action="Hit"></deal-hit-stand>
-        @*<form asp-action="Hit" method="post" class="col">
-            @if (!Model.NeedsDeal)
-            {
-                <button type="submit" class="btn btn-primary">Hit</button>
-            }
-            else
-            {
-                <button type="submit" class="btn btn-primary" disabled>Hit</button>
-            }
-        </form>*@
+        <deal-hit-stand asp-action="Hit">
+            <hit-button data="@Model.NeedsDeal"></hit-button>
+        </deal-hit-stand>
     </div>
 
     <div class="col-2">
-        <deal-hit-stand asp-action="Stand"></deal-hit-stand>
-        @*<form asp-action="Stand" method="post" class="col">
-            @if (!Model.NeedsDeal)
-            {
-                <button type="submit" class="btn btn-primary">Stand</button>
-            }
-            else
-            {
-                <button type="submit" class="btn btn-primary" disabled>Stand</button>
-            }
-        </form>*@
+        <deal-hit-stand asp-action="Stand">
+            <stand-button data="@Model.NeedsDeal"></stand-button>
+        </deal-hit-stand>
     </div>
 
 </div>
