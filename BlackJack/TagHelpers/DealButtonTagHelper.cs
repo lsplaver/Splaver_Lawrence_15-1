@@ -1,6 +1,4 @@
-﻿using BlackJack.Models;
-using BlackJack.Models.TagHelpers;
-using Microsoft.AspNetCore.Http;
+﻿using BlackJack.Models.TagHelpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -8,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static BlackJack.Models.Game;
 
 namespace BlackJack.TagHelpers
 {

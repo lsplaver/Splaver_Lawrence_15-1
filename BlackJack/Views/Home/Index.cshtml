@@ -4,12 +4,12 @@
     ViewBag.Title = "Blackjack";
 }
 
-<dealer-heading />
+<heading data="Dealer" />
 <div class="hand mb-4">
     <vc:hand hand-type="Dealer" hand="@Model.Dealer.Hand"></vc:hand>
 </div>
 
-<player-heading />
+<heading data="Player" />
 <div class="hand mb-4">
     <vc:hand hand-type="Player" hand="@Model.Player.Hand"></vc:hand>
 </div>

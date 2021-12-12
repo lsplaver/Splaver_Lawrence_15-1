@@ -1,5 +1,4 @@
-﻿using BlackJack.Models;
-using BlackJack.Models.TagHelpers;
+﻿using BlackJack.Models.TagHelpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -17,10 +16,6 @@ namespace BlackJack.TagHelpers
         [ViewContext]
         [HtmlAttributeNotBound]
         public ViewContext viewContext { get; set; }
-
-        [HtmlAttributeNotBound]
-        private IGame game { get; set; }
-        public DealHitStandButtonTagHelper(IGame g) => game = g;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
